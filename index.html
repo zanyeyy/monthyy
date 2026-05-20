@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>i luvv youu</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Consolas, monospace;
+    }
+
+    body{
+      background:#0d1117;
+      color:#58ff8a;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+    }
+
+    .terminal{
+      width:90%;
+      max-width:850px;
+      height:85vh;
+      background:#161b22;
+      border-radius:14px;
+      box-shadow:0 0 30px rgba(0,255,120,0.15);
+      overflow:hidden;
+      border:1px solid #2d333b;
+    }
+
+    .topbar{
+      background:#21262d;
+      padding:12px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .circle{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+    }
+
+    .red{ background:#ff5f56; }
+    .yellow{ background:#ffbd2e; }
+    .green{ background:#27c93f; }
+
+    .content{
+      padding:25px;
+      line-height:1.8;
+      font-size:1rem;
+      white-space:pre-wrap;
+      overflow-y:auto;
+      padding-right:10px;
+      height:calc(85vh - 50px);
+    }
+
+    .cursor{
+      display:inline-block;
+      width:10px;
+      background:#58ff8a;
+      margin-left:5px;
+      animation:blink 0.8s infinite;
+    }
+
+    @keyframes blink{
+      50%{
+        opacity:0;
+      }
+    }
+
+    .button{
+      margin-top:20px;
+      display:none;
+      padding:12px 18px;
+      background:transparent;
+      border:1px solid #58ff8a;
+      color:#58ff8a;
+      cursor:pointer;
+      border-radius:8px;
+      transition:0.3s;
+    }
+
+    .button:hover{
+      background:#58ff8a;
+      color:#0d1117;
+      box-shadow:0 0 15px rgba(88,255,138,0.5);
+    }
+
+    /* Scrollbar */
+    .content::-webkit-scrollbar{
+      width:6px;
+    }
+
+    .content::-webkit-scrollbar-thumb{
+      background:#58ff8a55;
+      border-radius:10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal">
+
+    <div class="topbar">
+      <div class="circle red"></div>
+      <div class="circle yellow"></div>
+      <div class="circle green"></div>
+    </div>
+
+    <div class="content">
+      <span id="text"></span><span class="cursor"></span>
+
+      <br><br>
+
+      <button class="button" id="btn">
+        open feelings.txt ♡
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+
+const text = `
+> initializing connection...
+> loading memories...
+> compiling message...
+
+happy monthsary babii mjj ♡
+
+Woww I still cant believe its only been a month, parang ang tagal na nating ganto hahaha
+
+Grabe everyday youve been with me, accompanying me habang walang tao dito, its like i never realized i was alone all this time. You always know how to make my day better, lalo na that one time na parang pagod na pagod ako, you cheered me up so much my energy came back hahaha
+
+Thank you for keeping me company and cheering me up when stella passed, kahit mej busy kana nun sa acads, nagawa mo pa talaga akong macomfort <3
+
+Thank you for being patient with me everydayy, sa mga katagalan ko, thanks for bearing with itt. Thanks sa pakikinig sa aking mga kakornihan at mga lame jokes hahaha, isama mona pati mga random momintz ko
+
+I honestly love how we are, every laugh, every random conversation, bawat moments with you means so much to me. Kahit yung mga moments na tahimik lang kitang tinitignan, napapa "dsurv kobato?" nalang ako hahaha.
+
+You've become one of the most important persons in my life in just a short amount of time hahah.
+
+I know times have been rough lately pero kapit lang makakaraos din tayo.
+
+No matter how busy or difficult life gets, I hope we continue being there for each other, i really want us to get through things together, to grow together.
+
+Again Happy Monthsary babii MJ, I love you so so so much, more than words can explain. mwaa ♡
+
+After talaga neto magsasaya talaga tayo hahahah
+`;
+
+    let i = 0;
+    const speed = 22;
+
+    const textElement = document.getElementById("text");
+    const content = document.querySelector(".content");
+
+    function typeWriter(){
+
+      if(i < text.length){
+
+        textElement.innerHTML += text.charAt(i);
+
+        i++;
+
+        content.scrollTop = content.scrollHeight;
+
+        setTimeout(typeWriter, speed);
+
+      } else {
+
+        document.getElementById("btn").style.display = "inline-block";
+
+      }
+    }
+
+    typeWriter();
+
+    document.getElementById("btn").onclick = () => {
+      alert("i love youuu ♡");
+    };
+
+  </script>
+
+</body>
+</html>
